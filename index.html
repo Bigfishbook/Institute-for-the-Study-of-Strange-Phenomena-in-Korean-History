@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -112,14 +112,14 @@
       </div>
     </section>
 
-    <!-- 탐사원 적성 평가 (인물 유형 테스트) -->
+    <!-- 탐사원 적성 평가 (외부 테스트 링크) -->
     <section class="section section-invert" id="test" aria-labelledby="test-title">
       <div class="wrap narrow">
         <h2 class="section-title" id="test-title">
           <span class="title-icon" data-icon-slot="test"></span>
           탐사원 적성 평가
         </h2>
-        <div class="quiz" id="quiz" aria-live="polite"></div>
+        <div class="test-box" id="test-box"></div>
       </div>
     </section>
 
@@ -137,7 +137,7 @@
       </div>
     </section>
 
-    <!-- (대외비) 지침서 (본문 미리보기) -->
+    <!-- (대외비) 지침서 (이미지) -->
     <section class="section" id="preview" aria-labelledby="preview-title">
       <div class="wrap">
         <div class="section-head">
@@ -145,11 +145,11 @@
             <span class="title-icon" data-icon-slot="preview"></span>
             (대외비) 지침서
           </h2>
-          <p class="section-note">생존을 위해 끝까지 정독하세요. 키보드 방향키로도 쪽을 넘길 수 있습니다.</p>
+          <p class="section-note">생존을 위해 끝까지 정독하세요. 이미지를 누르면 원본 크기로 볼 수 있습니다.</p>
         </div>
-        <div class="reader">
-          <div class="spread" id="spread"></div>
-          <div class="reader-controls">
+        <div class="guide">
+          <div class="guide-frame" id="guide-frame"></div>
+          <div class="reader-controls" id="guide-controls" hidden>
             <button class="btn btn-line" type="button" id="page-prev">이전 쪽</button>
             <p class="page-count" id="page-count" aria-live="polite"></p>
             <button class="btn btn-line" type="button" id="page-next">다음 쪽</button>
@@ -182,6 +182,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>

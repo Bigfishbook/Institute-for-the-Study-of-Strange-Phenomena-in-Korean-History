@@ -2,8 +2,8 @@
    한국사이상현상연구원 · 연구원 포털
    ---------------------------------------------------------
    사이트의 모든 내용은 아래 "설정" 부분에서 고칠 수 있습니다.
-   도서 정보, 서점 링크, 연구원, 테스트 문항, 플레이리스트 주소,
-   미리보기 본문을 실제 내용으로 바꿔 사용하세요.
+   도서 정보, 서점 링크, 연구원, 테스트 링크, 플레이리스트 주소,
+   지침서 이미지를 실제 내용으로 바꿔 사용하세요.
    ========================================================= */
 
 /* ---------------------------------------------------------
@@ -128,65 +128,15 @@ const RESEARCHERS = [
 ];
 
 /* ---------------------------------------------------------
-   4. 설정: 인물 유형 테스트 문항
-      각 선택지의 type은 위 RESEARCHERS의 id와 연결됩니다.
+   4. 설정: 탐사원 적성 평가 (외부 테스트 링크)
+      url에 테스트 주소를 넣으면 '평가 시작하기' 버튼이 활성화됩니다.
+      예: url: "https://example.com/my-test",
    --------------------------------------------------------- */
-const QUESTIONS = [
-  {
-    text: "새벽 3시, 폐쇄된 지하철역에서 이상현상 신고가 들어왔습니다. 가장 먼저 하는 일은?",
-    options: [
-      { text: "출동 전에 과거 기록과 격리 절차부터 확인한다", type: "seohee" },
-      { text: "장비를 챙겨 바로 현장으로 출발한다", type: "jeechul" },
-      { text: "신고 시각과 위치를 이전 사례 데이터와 비교한다", type: "jeeyul" },
-      { text: "신고자에게 전화해 무엇을 느꼈는지 자세히 묻는다", type: "yena" },
-    ],
-  },
-  {
-    text: "현장에 도착하자 벽 안쪽에서 누군가 두드리는 소리가 들립니다.",
-    options: [
-      { text: "팀원 위치를 확인하고, 절차대로 안전거리를 둔다", type: "seohee" },
-      { text: "안에 사람이 갇혔을 수 있으니 곧장 벽을 살핀다", type: "jeechul" },
-      { text: "소리의 간격을 재서 규칙이 있는지 찾는다", type: "jeeyul" },
-      { text: "같은 박자로 벽을 두드려 대답해 본다", type: "yena" },
-    ],
-  },
-  {
-    text: "팀원 한 명이 규정을 어기고 혼자 안쪽으로 들어갔습니다.",
-    options: [
-      { text: "무전으로 위치를 보고받고, 복귀 후 정식으로 경고한다", type: "seohee" },
-      { text: "따라 들어간다. 혼자 두는 게 더 위험하다", type: "jeechul" },
-      { text: "그 판단에 합리적인 근거가 있었는지 따져 본다", type: "jeeyul" },
-      { text: "그렇게까지 한 이유가 무엇이었을지 먼저 생각한다", type: "yena" },
-    ],
-  },
-  {
-    text: "탐사가 없는 휴일, 주로 무엇을 하나요?",
-    options: [
-      { text: "메모와 일정을 정리하고 다음 주 계획을 세운다", type: "seohee" },
-      { text: "몸을 움직인다. 운동을 하거나 즉흥으로 떠난다", type: "jeechul" },
-      { text: "궁금했던 주제 하나를 끝까지 파고든다", type: "jeeyul" },
-      { text: "좋아하는 사람들을 만나 오래 이야기를 나눈다", type: "yena" },
-    ],
-  },
-  {
-    text: "탐사 보고서에 반드시 들어가야 하는 것은?",
-    options: [
-      { text: "누가 읽어도 똑같이 대응할 수 있는 정확한 절차", type: "seohee" },
-      { text: "다친 사람 없이 모두 돌아왔다는 사실", type: "jeechul" },
-      { text: "다시 확인할 수 있는 수치와 검증된 가설", type: "jeeyul" },
-      { text: "현상이 우리에게 보인 반응과 그 변화", type: "yena" },
-    ],
-  },
-  {
-    text: "이상현상을 한 문장으로 정의한다면?",
-    options: [
-      { text: "반드시 기록하고 대비해야 할 위험", type: "seohee" },
-      { text: "누군가 다치기 전에 막아야 할 사고", type: "jeechul" },
-      { text: "아직 풀리지 않은 방정식", type: "jeeyul" },
-      { text: "우리가 모르는 방식으로 존재하는 무언가", type: "yena" },
-    ],
-  },
-];
+const TEST = {
+  url: "https://smore.im/quiz/qGpEe5z6OJ",
+  intro: "입사를 희망하시는 분은 먼저 평가를 진행해 주세요. 평가 결과에 따라 배정될 부서가 결정됩니다.",
+  button: "평가 시작하기",
+};
 
 /* ---------------------------------------------------------
    5. 설정: 플레이리스트
@@ -198,65 +148,21 @@ const PLAYLISTS = [
     name: "오디오 아카이브",
     desc: "탐사원들이 탐사 시 유용하게 사용한 오디오 플레이리스트입니다",
     links: [
-      { platform: "YouTube Music", url: "https://youtube.com/playlist?list=PLP4PFc0hKG-4&si=g7LLlKf3wD5hP83O" },
+      { platform: "재생하기", url: "https://youtube.com/playlist?list=PLP4PFc0hKG-4&si=g7LLlKf3wD5hP83O" },
 
     ],
   },
 ];
 
 /* ---------------------------------------------------------
-   6. 설정: 본문 미리보기
-      paragraphs 안의 문자열 하나가 문단 하나입니다.
-      { report: "..." } 형태는 사건 기록 상자로 표시됩니다.
+   6. 설정: (대외비) 지침서 이미지
+      jpg 파일을 index.html과 같은 위치에 올리고 파일 이름을 적어 주세요.
+      파일 이름은 대소문자와 확장자까지 똑같아야 합니다. (guide.jpg ≠ Guide.JPG)
+      여러 장이면 한 줄씩 추가하면 되고, 2장 이상일 때 '이전 쪽/다음 쪽' 버튼이 나타납니다.
+      예: { src: "guide-2.jpg", alt: "(대외비) 지침서 2쪽" },
    --------------------------------------------------------- */
-const CHAPTER = "1장 지하 3층의 물소리";
-const PAGE_START = 9;
-const PAGES = [
-  [
-    "신고는 새벽 두 시 사십 분에 들어왔다. 폐쇄된 지 칠 년 된 을지상가 지하 3층에서 물소리가 난다는 내용이었다. 수도관은 이미 오래전에 끊겼고, 지하 3층은 설계도에 존재하지 않는 층이었다.",
-    { report: "<b>사건 번호</b> 26-0913<br><b>분류</b> 공간 확장형 추정<br><b>위험 등급</b> 3등급, 현장 판단에 따라 조정" },
-    "윤여름은 출동 차량 뒷좌석에서 신고 녹취를 세 번째로 들었다. 신고자는 경비원이었다. 그는 물소리가 난다고 말하지 않았다. 누군가 물속에서 숨을 참고 있는 소리가 난다고 말했다.",
-  ],
-  [
-    "“숨을 참는 소리라는 게 있긴 해요?”",
-    "여름의 질문에 운전석의 강도현이 룸미러로 흘끗 뒤를 보았다.",
-    "“있지. 아주 조용한 소리.”",
-    "조수석의 한서윤은 대답 대신 태블릿을 넘겼다. 화면에는 같은 건물에서 접수된 과거 기록이 떠 있었다. 2019년, 2022년, 그리고 2024년. 세 건 모두 새벽 두 시 사십 분이었다.",
-    "“매번 같은 시각이네요.”",
-    "“그래서 이번엔 우리가 가는 거야.” 서윤이 말했다. “세 번 모두, 기록을 끝까지 남긴 사람이 없었으니까.”",
-  ],
-  [
-    "상가 입구의 셔터는 반쯤 올라가 있었다. 경비원은 셔터 앞에 서서 손전등을 꼭 쥐고 있었는데, 불은 켜져 있지 않았다.",
-    "“불을 켜면 소리가 멈춰요.” 그가 말했다. “멈추면, 더 가까운 데서 다시 시작하고요.”",
-    "무전기에서 민이안의 목소리가 흘러나왔다. 그는 본부 상황실에서 건물의 전력과 습도 수치를 받아 보고 있었다.",
-    "“지하 2층 습도가 방금 94퍼센트를 넘었어요. 비는 안 왔습니다. 그러니까, 물이 올라올 이유가 없어요.”",
-    "“이유는 들어가서 찾자.” 도현이 헬멧 끈을 조였다.",
-  ],
-  [
-    "지하 2층까지는 계단이 층마다 스물네 칸이었다. 여름은 속으로 계단을 셌다. 연구원 교육에서 가장 먼저 배우는 것이 숫자를 세는 일이었다. 숫자가 틀어지는 순간이 곧 현상이 시작되는 순간이기 때문이다.",
-    "스물둘, 스물셋, 스물넷.",
-    "그리고 스물다섯.",
-    "여름은 발을 멈췄다. 앞서 걷던 서윤도 이미 멈춰 있었다. 존재하지 않아야 할 스물다섯 번째 계단 아래로, 검은 물이 소리 없이 차오르고 있었다.",
-  ],
-  [
-    "“기록 시작.” 서윤이 낮게 말했다. “02시 51분. 지하 2층과 3층 사이, 스물다섯 번째 계단에서 수면 확인.”",
-    "물은 흐르지 않았다. 파문도 없었다. 손전등 빛이 닿는 곳마다 수면은 거울처럼 매끈했고, 그 안에 비친 계단은 위가 아니라 아래로 끝없이 이어져 있었다.",
-    "그때 소리가 들렸다. 아주 조용한 소리. 누군가 물속에서, 오래, 숨을 참고 있는 소리.",
-    "여름은 자기도 모르게 숨을 멈췄다. 그리고 깨달았다. 소리는 물속이 아니라 바로 옆에서 들리고 있었다.",
-  ],
-  [
-    "“여름 씨.” 도현이 여름의 어깨를 붙잡았다. “숨 쉬어. 천천히.”",
-    "여름이 숨을 내쉬자 옆에서 들리던 소리도 함께 사라졌다. 대신 물에 비친 계단 위에, 조금 전까지 없던 발자국 하나가 찍혀 있었다.",
-    "젖은 맨발이었다. 그리고 그 발끝은 위를 향하고 있었다.",
-    "무전기 너머에서 이안이 무언가 말하려다 멈추는 소리가 들렸다. 서윤은 펜을 쥔 손에 힘을 주었다.",
-    "“계속 기록해.” 그녀가 말했다. “이번에는 끝까지.”",
-  ],
-  [
-    "발자국은 하나씩 늘어났다. 물속의 계단을 거슬러, 수면을 향해, 그들이 서 있는 스물다섯 번째 계단을 향해.",
-    "도현이 한 걸음 앞으로 나서며 팔을 벌려 셋을 뒤로 물렸다. 여름은 녹음기를 켠 채 발자국의 간격을 셌다. 하나, 둘, 셋. 걸음은 점점 짧아지고 있었다.",
-    "“멈추려는 거예요.” 여름이 속삭였다. “다 올라와서, 누군가를 기다리려는 것 같아요.”",
-    "서윤이 처음으로 기록하던 손을 멈추고 여름을 돌아보았다.",
-  ],
+const GUIDE_IMAGES = [
+  { src: "guide.jpg", alt: "(대외비) 지침서" },
 ];
 
 /* ---------------------------------------------------------
@@ -528,137 +434,18 @@ function selectResearcher(id) {
   bindRedactions(dossier);
 }
 
-/* ---------- 인물 유형 테스트 ---------- */
-const quiz = { step: -1, answers: [] };
+/* ---------- 탐사원 적성 평가 (외부 링크) ---------- */
+function renderTest() {
+  const box = $("#test-box");
+  const action = TEST.url
+    ? `<a class="btn btn-red test-start" href="${TEST.url}" target="_blank" rel="noopener noreferrer">
+         ${TEST.button}${ARROW_SVG}<span class="sr-only">(새 창에서 열림)</span>
+       </a>
+       <p class="test-note">평가는 새 창에서 열립니다.</p>`
+    : `<button class="btn btn-red test-start" type="button" disabled>평가 링크 준비 중</button>
+       <p class="test-note">script.js의 TEST.url에 테스트 주소를 넣으면 버튼이 활성화됩니다.</p>`;
 
-function renderQuiz() {
-  const box = $("#quiz");
-
-  if (quiz.step === -1) {
-    box.innerHTML = `
-      <div class="quiz-intro">
-        <p>현장에서 당신은 어떤 연구원일까요? 탐사 상황을 담은 여섯 가지 질문에 답하면, 현장탐사 1팀에서 당신과 가장 닮은 연구원을 알려 드립니다.</p>
-        <p class="quiz-small">약 1분이 걸리며, 답변은 어디에도 저장되지 않습니다.</p>
-        <button class="btn btn-red" type="button" data-action="start">평가 시작하기</button>
-      </div>`;
-    return;
-  }
-
-  if (quiz.step >= QUESTIONS.length) {
-    renderResult(box);
-    return;
-  }
-
-  const q = QUESTIONS[quiz.step];
-  const chosen = quiz.answers[quiz.step];
-  const percent = (quiz.step / QUESTIONS.length) * 100;
-  box.innerHTML = `
-    <div class="quiz-progress"><span>질문 ${quiz.step + 1} / ${QUESTIONS.length}</span></div>
-    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${QUESTIONS.length}" aria-valuenow="${quiz.step}">
-      <div class="progress-fill" style="width:${percent}%"></div>
-    </div>
-    <h3 class="quiz-question" tabindex="-1">${q.text}</h3>
-    <div class="quiz-options">
-      ${q.options
-        .map(
-          (o, i) => `<button class="quiz-option${chosen === o.type ? " is-chosen" : ""}" type="button" data-action="answer" data-type="${o.type}">${o.text}</button>`
-        )
-        .join("")}
-    </div>
-    ${quiz.step > 0 ? '<button class="btn btn-line quiz-back" type="button" data-action="back">이전 질문</button>' : ""}`;
-  $(".quiz-question", box).focus({ preventScroll: true });
-}
-
-function renderResult(box) {
-  const score = {};
-  RESEARCHERS.forEach((r) => (score[r.id] = 0));
-  quiz.answers.forEach((t) => score[t]++);
-  const max = Math.max(...Object.values(score));
-  const tied = Object.keys(score).filter((k) => score[k] === max);
-  // 동점이면 마지막 질문에 가까운 답을 우선합니다
-  const winner = [...quiz.answers].reverse().find((t) => tied.includes(t));
-  const r = RESEARCHERS.find((x) => x.id === winner);
-
-  box.innerHTML = `
-    <div class="result">
-      <div class="result-head">
-        <p class="result-label">평가 결과</p>
-        <h3 class="result-type" tabindex="-1">${r.type.title}</h3>
-        <p class="result-match">${r.type.summary}. 당신과 가장 닮은 연구원은 <b>${r.name}</b>입니다.</p>
-      </div>
-      <div class="result-body">
-        ${r.type.body.map((p) => `<p>${p}</p>`).join("")}
-        <ul class="result-traits">${r.type.traits.map((t) => `<li>${t}</li>`).join("")}</ul>
-        <div class="result-actions">
-          <button class="btn btn-red" type="button" data-action="profile" data-id="${r.id}">${r.name} 인사 기록 보기</button>
-          <button class="btn btn-line" type="button" data-action="copy" data-title="${r.type.title}" data-name="${r.name}">결과 문구 복사</button>
-          <button class="btn btn-line" type="button" data-action="restart">다시 평가하기</button>
-        </div>
-      </div>
-    </div>`;
-  $(".result-type", box).focus({ preventScroll: true });
-}
-
-function initQuiz() {
-  const box = $("#quiz");
-  box.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-action]");
-    if (!btn) return;
-    const action = btn.dataset.action;
-
-    if (action === "start") {
-      quiz.step = 0;
-      quiz.answers = [];
-    } else if (action === "answer") {
-      quiz.answers[quiz.step] = btn.dataset.type;
-      btn.classList.add("is-chosen");
-      setTimeout(() => {
-        quiz.step++;
-        renderQuiz();
-      }, 180);
-      return;
-    } else if (action === "back") {
-      quiz.step = Math.max(0, quiz.step - 1);
-    } else if (action === "restart") {
-      quiz.step = 0;
-      quiz.answers = [];
-    } else if (action === "profile") {
-      selectResearcher(btn.dataset.id);
-      location.hash = "researchers";
-      $(`#tab-${btn.dataset.id}`).focus({ preventScroll: true });
-      return;
-    } else if (action === "copy") {
-      const text = `[이상현상탐사연구원 적성 평가] 나는 ${btn.dataset.title}! 가장 닮은 연구원은 ${btn.dataset.name}. ${location.href.split("#")[0]}#test`;
-      copyText(text);
-      return;
-    }
-    renderQuiz();
-  });
-  renderQuiz();
-}
-
-function copyText(text) {
-  if (navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(text).then(
-      () => showToast("결과 문구를 복사했습니다."),
-      () => fallbackCopy(text)
-    );
-  } else {
-    fallbackCopy(text);
-  }
-}
-function fallbackCopy(text) {
-  const area = document.createElement("textarea");
-  area.value = text;
-  area.setAttribute("readonly", "");
-  area.style.position = "fixed";
-  area.style.opacity = "0";
-  document.body.appendChild(area);
-  area.select();
-  let ok = false;
-  try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
-  area.remove();
-  showToast(ok ? "결과 문구를 복사했습니다." : "복사하지 못했습니다. 결과 화면을 캡처해 공유해 주세요.");
+  box.innerHTML = `<p class="test-intro">${TEST.intro}</p>${action}`;
 }
 
 /* ---------- 플레이리스트 ---------- */
@@ -690,95 +477,82 @@ function renderPlaylists() {
   ).join("");
 }
 
-/* ---------- 본문 미리보기 ---------- */
-const reader = { index: 0 };
-const isDouble = () => window.matchMedia("(min-width: 901px)").matches;
+/* ---------- (대외비) 지침서 이미지 ---------- */
+const guide = { index: 0 };
+const guideImages = () => GUIDE_IMAGES.filter((g) => g && g.src);
 
-function pageHtml(i) {
-  // 마지막 칸은 안내 페이지
-  if (i === PAGES.length) {
-    return `
-      <div class="page is-end">
-        <p class="end-mark">공개된 기록은 여기까지입니다.</p>
-        <a class="btn btn-red" href="#book">이어서 읽으려면 도서 구매하기</a>
-      </div>`;
+function renderGuide(animate = false) {
+  const frame = $("#guide-frame");
+  const controls = $("#guide-controls");
+  const images = guideImages();
+
+  if (images.length === 0) {
+    frame.innerHTML = `<p class="guide-empty">지침서 이미지가 아직 등록되지 않았습니다.<br>script.js의 GUIDE_IMAGES에 이미지 파일 이름을 적어 주세요.</p>`;
+    controls.hidden = true;
+    return;
   }
-  const body = PAGES[i]
-    .map((p) => (typeof p === "string" ? `<p>${p}</p>` : `<p class="report">${p.report}</p>`))
-    .join("");
-  return `
-    <div class="page">
-      ${i === 0 ? `<p class="page-chapter">${CHAPTER}</p>` : ""}
-      <div class="page-body">${body}</div>
-      <p class="page-num">${PAGE_START + i}</p>
-    </div>`;
-}
 
-function renderReader(animate = false) {
-  const total = PAGES.length + 1;
-  const step = isDouble() ? 2 : 1;
-  if (step === 2 && reader.index % 2 === 1) reader.index--;
-  reader.index = Math.min(Math.max(0, reader.index), total - 1);
+  guide.index = Math.min(Math.max(0, guide.index), images.length - 1);
+  const img = images[guide.index];
+  const alt = img.alt || `(대외비) 지침서 ${guide.index + 1}쪽`;
 
-  const spread = $("#spread");
-  let html = pageHtml(reader.index);
-  if (step === 2 && reader.index + 1 < total) html += pageHtml(reader.index + 1);
-  spread.innerHTML = html;
+  frame.innerHTML = `
+    <figure class="guide-figure">
+      <a class="guide-link" href="${img.src}" target="_blank" rel="noopener">
+        <img class="guide-img" src="${img.src}" alt="${alt}">
+      </a>
+      <figcaption class="guide-caption">
+        <a href="${img.src}" target="_blank" rel="noopener">원본 크기로 보기<span class="sr-only">(새 창에서 열림)</span></a>
+      </figcaption>
+    </figure>`;
+
+  $(".guide-img", frame).addEventListener("error", () => {
+    frame.innerHTML = `<p class="guide-empty">이미지를 불러오지 못했습니다.<br><b>${img.src}</b> 파일이 index.html과 같은 위치에 있는지, 파일 이름의 대소문자와 확장자가 정확한지 확인해 주세요.</p>`;
+  });
 
   if (animate) {
-    spread.classList.remove("is-turning");
-    void spread.offsetWidth;
-    spread.classList.add("is-turning");
+    frame.classList.remove("is-turning");
+    void frame.offsetWidth;
+    frame.classList.add("is-turning");
   }
 
-  const last = Math.min(reader.index + step, total);
-  $("#page-count").textContent =
-    step === 2 && last - reader.index === 2
-      ? `${reader.index + 1}–${last} / ${total}쪽`
-      : `${reader.index + 1} / ${total}쪽`;
+  controls.hidden = images.length < 2;
+  $("#page-count").textContent = `${guide.index + 1} / ${images.length}쪽`;
+  $("#page-prev").disabled = guide.index === 0;
+  $("#page-next").disabled = guide.index === images.length - 1;
 
-  $("#page-prev").disabled = reader.index === 0;
-  $("#page-next").disabled = reader.index + step >= total;
+  // 다음 쪽 이미지를 미리 불러와 넘길 때 깜빡임을 줄입니다
+  const next = images[guide.index + 1];
+  if (next) new Image().src = next.src;
 }
 
-function turnPage(dir) {
-  const step = isDouble() ? 2 : 1;
-  const total = PAGES.length + 1;
-  const next = reader.index + dir * step;
-  if (next < 0 || next >= total) return;
-  reader.index = next;
-  renderReader(true);
+function turnGuide(dir) {
+  const next = guide.index + dir;
+  if (next < 0 || next >= guideImages().length) return;
+  guide.index = next;
+  renderGuide(true);
 }
 
-function initReader() {
-  $("#page-prev").addEventListener("click", () => turnPage(-1));
-  $("#page-next").addEventListener("click", () => turnPage(1));
+function initGuide() {
+  $("#page-prev").addEventListener("click", () => turnGuide(-1));
+  $("#page-next").addEventListener("click", () => turnGuide(1));
 
-  // 미리보기 영역이 화면에 보일 때만 방향키로 넘기기
-  let readerVisible = false;
+  // 지침서가 화면에 보일 때만 방향키로 넘기기
+  let visible = false;
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(
-      (entries) => entries.forEach((en) => (readerVisible = en.isIntersecting)),
-      { threshold: 0.4 }
-    ).observe($("#spread"));
+      (entries) => entries.forEach((en) => (visible = en.isIntersecting)),
+      { threshold: 0.3 }
+    ).observe($("#guide-frame"));
   }
   document.addEventListener("keydown", (e) => {
-    if (!readerVisible || $("#icon-dialog").open) return;
-    if (["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)) return;
+    if (!visible || $("#icon-dialog").open || guideImages().length < 2) return;
     if (document.activeElement.closest?.(".roster-tabs")) return;
-    if (e.key === "ArrowRight") turnPage(1);
-    if (e.key === "ArrowLeft") turnPage(-1);
+    if (e.key === "ArrowRight") turnGuide(1);
+    if (e.key === "ArrowLeft") turnGuide(-1);
   });
 
-  let wasDouble = isDouble();
-  window.addEventListener("resize", () => {
-    if (isDouble() !== wasDouble) {
-      wasDouble = isDouble();
-      renderReader();
-    }
-  });
-
-  renderReader();
+  renderGuide();
 }
 
 /* ---------- 시작 ---------- */
@@ -790,7 +564,7 @@ document.addEventListener("DOMContentLoaded", () => {
   bindRedactions();
   renderBook();
   renderRoster();
-  initQuiz();
+  renderTest();
   renderPlaylists();
-  initReader();
+  initGuide();
 });
