@@ -13,13 +13,15 @@ const BOOK = {
   title: "한국사 이상현상 연구원",
   description:
     "국가가 '사적'이라는 이름으로 보존한 장소에서, 정작 역사에 남지 못한 사람들의 목소리가 들려오기 시작한다. 궁궐과 고분, 사찰과 종갓집에서 발생하는 이상현상을 추적하는 비밀 기관 '한국사 이상현상 연구원'의 첫 번째 탐사 기록",
+};
 
 /* 서점 링크: url을 실제 상품 페이지 주소로 바꾸면 더 좋습니다.
    지금은 도서 제목으로 검색한 결과 페이지로 연결됩니다. */
 const q = encodeURIComponent(BOOK.title);
 const STORES = [
-  { name: "기록 열람", url: `https://product.kyobobook.co.kr/detail/S000220693844 },
- 
+  { name: "기록 열람", url: `https://product.kyobobook.co.kr/detail/S000220693844` },
+];
+
 /* ---------------------------------------------------------
    2. 설정: 메인 메뉴 항목과 기본 아이콘
    --------------------------------------------------------- */
@@ -133,55 +135,55 @@ const QUESTIONS = [
   {
     text: "새벽 3시, 폐쇄된 지하철역에서 이상현상 신고가 들어왔습니다. 가장 먼저 하는 일은?",
     options: [
-      { text: "출동 전에 과거 기록과 격리 절차부터 확인한다", type: "seoyun" },
-      { text: "장비를 챙겨 바로 현장으로 출발한다", type: "dohyun" },
-      { text: "신고 시각과 위치를 이전 사례 데이터와 비교한다", type: "ian" },
-      { text: "신고자에게 전화해 무엇을 느꼈는지 자세히 묻는다", type: "yeoreum" },
+      { text: "출동 전에 과거 기록과 격리 절차부터 확인한다", type: "seohee" },
+      { text: "장비를 챙겨 바로 현장으로 출발한다", type: "jeechul" },
+      { text: "신고 시각과 위치를 이전 사례 데이터와 비교한다", type: "jeeyul" },
+      { text: "신고자에게 전화해 무엇을 느꼈는지 자세히 묻는다", type: "yena" },
     ],
   },
   {
     text: "현장에 도착하자 벽 안쪽에서 누군가 두드리는 소리가 들립니다.",
     options: [
-      { text: "팀원 위치를 확인하고, 절차대로 안전거리를 둔다", type: "seoyun" },
-      { text: "안에 사람이 갇혔을 수 있으니 곧장 벽을 살핀다", type: "dohyun" },
-      { text: "소리의 간격을 재서 규칙이 있는지 찾는다", type: "ian" },
-      { text: "같은 박자로 벽을 두드려 대답해 본다", type: "yeoreum" },
+      { text: "팀원 위치를 확인하고, 절차대로 안전거리를 둔다", type: "seohee" },
+      { text: "안에 사람이 갇혔을 수 있으니 곧장 벽을 살핀다", type: "jeechul" },
+      { text: "소리의 간격을 재서 규칙이 있는지 찾는다", type: "jeeyul" },
+      { text: "같은 박자로 벽을 두드려 대답해 본다", type: "yena" },
     ],
   },
   {
     text: "팀원 한 명이 규정을 어기고 혼자 안쪽으로 들어갔습니다.",
     options: [
-      { text: "무전으로 위치를 보고받고, 복귀 후 정식으로 경고한다", type: "seoyun" },
-      { text: "따라 들어간다. 혼자 두는 게 더 위험하다", type: "dohyun" },
-      { text: "그 판단에 합리적인 근거가 있었는지 따져 본다", type: "ian" },
-      { text: "그렇게까지 한 이유가 무엇이었을지 먼저 생각한다", type: "yeoreum" },
+      { text: "무전으로 위치를 보고받고, 복귀 후 정식으로 경고한다", type: "seohee" },
+      { text: "따라 들어간다. 혼자 두는 게 더 위험하다", type: "jeechul" },
+      { text: "그 판단에 합리적인 근거가 있었는지 따져 본다", type: "jeeyul" },
+      { text: "그렇게까지 한 이유가 무엇이었을지 먼저 생각한다", type: "yena" },
     ],
   },
   {
     text: "탐사가 없는 휴일, 주로 무엇을 하나요?",
     options: [
-      { text: "메모와 일정을 정리하고 다음 주 계획을 세운다", type: "seoyun" },
-      { text: "몸을 움직인다. 운동을 하거나 즉흥으로 떠난다", type: "dohyun" },
-      { text: "궁금했던 주제 하나를 끝까지 파고든다", type: "ian" },
-      { text: "좋아하는 사람들을 만나 오래 이야기를 나눈다", type: "yeoreum" },
+      { text: "메모와 일정을 정리하고 다음 주 계획을 세운다", type: "seohee" },
+      { text: "몸을 움직인다. 운동을 하거나 즉흥으로 떠난다", type: "jeechul" },
+      { text: "궁금했던 주제 하나를 끝까지 파고든다", type: "jeeyul" },
+      { text: "좋아하는 사람들을 만나 오래 이야기를 나눈다", type: "yena" },
     ],
   },
   {
     text: "탐사 보고서에 반드시 들어가야 하는 것은?",
     options: [
-      { text: "누가 읽어도 똑같이 대응할 수 있는 정확한 절차", type: "seoyun" },
-      { text: "다친 사람 없이 모두 돌아왔다는 사실", type: "dohyun" },
-      { text: "다시 확인할 수 있는 수치와 검증된 가설", type: "ian" },
-      { text: "현상이 우리에게 보인 반응과 그 변화", type: "yeoreum" },
+      { text: "누가 읽어도 똑같이 대응할 수 있는 정확한 절차", type: "seohee" },
+      { text: "다친 사람 없이 모두 돌아왔다는 사실", type: "jeechul" },
+      { text: "다시 확인할 수 있는 수치와 검증된 가설", type: "jeeyul" },
+      { text: "현상이 우리에게 보인 반응과 그 변화", type: "yena" },
     ],
   },
   {
     text: "이상현상을 한 문장으로 정의한다면?",
     options: [
-      { text: "반드시 기록하고 대비해야 할 위험", type: "seoyun" },
-      { text: "누군가 다치기 전에 막아야 할 사고", type: "dohyun" },
-      { text: "아직 풀리지 않은 방정식", type: "ian" },
-      { text: "우리가 모르는 방식으로 존재하는 무언가", type: "yeoreum" },
+      { text: "반드시 기록하고 대비해야 할 위험", type: "seohee" },
+      { text: "누군가 다치기 전에 막아야 할 사고", type: "jeechul" },
+      { text: "아직 풀리지 않은 방정식", type: "jeeyul" },
+      { text: "우리가 모르는 방식으로 존재하는 무언가", type: "yena" },
     ],
   },
 ];
@@ -443,10 +445,10 @@ function initIconPicker() {
 /* ---------- 도서 ---------- */
 function renderBook() {
   $("#cover-title").textContent = BOOK.title;
-  $("#cover-author").textContent = BOOK.author;
-  $("#book-name").textContent = `『${BOOK.title}』 ${BOOK.author} 지음`;
+  $("#cover-author").textContent = BOOK.author || "";
+  $("#book-name").textContent = BOOK.author ? `『${BOOK.title}』 ${BOOK.author} 지음` : `『${BOOK.title}』`;
   $("#book-desc").textContent = BOOK.description;
-  $("#book-meta").innerHTML = BOOK.meta.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
+  $("#book-meta").innerHTML = (BOOK.meta || []).map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
   $("#store-list").innerHTML = STORES.map(
     (s) => `
       <li><a class="store-link" href="${s.url}" target="_blank" rel="noopener noreferrer">
@@ -622,7 +624,7 @@ function initQuiz() {
       quiz.answers = [];
     } else if (action === "profile") {
       selectResearcher(btn.dataset.id);
-      $("#researchers").scrollIntoView();
+      location.hash = "researchers";
       $(`#tab-${btn.dataset.id}`).focus({ preventScroll: true });
       return;
     } else if (action === "copy") {
