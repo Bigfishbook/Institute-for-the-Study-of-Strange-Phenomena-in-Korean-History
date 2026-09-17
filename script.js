@@ -8,9 +8,12 @@
 
 /* ---------------------------------------------------------
    1. 설정: 도서 정보
+      cover: 표지 jpg 파일을 index.html과 같은 위치에 올리고 파일 이름을 적어 주세요.
+             파일을 찾지 못하면 기존에 그려진 표지가 대신 표시됩니다.
    --------------------------------------------------------- */
 const BOOK = {
   title: "한국사 이상현상 연구원",
+  cover: "cover.jpg",
   description:
     "국가가 '사적'이라는 이름으로 보존한 장소에서, 정작 역사에 남지 못한 사람들의 목소리가 들려오기 시작한다. 궁궐과 고분, 사찰과 종갓집에서 발생하는 이상현상을 추적하는 비밀 기관 '한국사 이상현상 연구원'의 첫 번째 탐사 기록",
 };
@@ -133,8 +136,8 @@ const RESEARCHERS = [
       예: url: "https://example.com/my-test",
    --------------------------------------------------------- */
 const TEST = {
-  url: "https://smore.im/quiz/qGpEe5z6OJ",
-  intro: "입사를 희망하시는 분은 먼저 평가를 진행해 주세요. 평가 결과에 따라 배정될 부서가 결정됩니다.",
+  url: "",
+  intro: "입사를 희망하시는 분은 먼저 적성 평가를 진행해 주세요. 평가 결과에 따라 배정될 부서가 결정됩니다.",
   button: "평가 시작하기",
 };
 
@@ -148,7 +151,7 @@ const PLAYLISTS = [
     name: "오디오 아카이브",
     desc: "탐사원들이 탐사 시 유용하게 사용한 오디오 플레이리스트입니다",
     links: [
-      { platform: "재생하기", url: "https://youtube.com/playlist?list=PLP4PFc0hKG-4&si=g7LLlKf3wD5hP83O" },
+      { platform: "YouTube Music", url: "https://youtube.com/playlist?list=PLP4PFc0hKG-4&si=g7LLlKf3wD5hP83O" },
 
     ],
   },
@@ -355,12 +358,31 @@ function renderBook() {
   $("#book-name").textContent = BOOK.author ? `『${BOOK.title}』 ${BOOK.author} 지음` : `『${BOOK.title}』`;
   $("#book-desc").textContent = BOOK.description;
   $("#book-meta").innerHTML = (BOOK.meta || []).map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
+  renderCoverImage();
   $("#store-list").innerHTML = STORES.map(
     (s) => `
       <li><a class="store-link" href="${s.url}" target="_blank" rel="noopener noreferrer">
         ${s.name}${ARROW_SVG}<span class="sr-only">(새 창에서 열림)</span>
       </a></li>`
   ).join("");
+}
+
+/* 실제 표지 이미지: 불러오기에 성공했을 때만 그려진 표지와 바꿉니다 */
+function renderCoverImage() {
+  if (!BOOK.cover) return;
+  const cover = $(".book-cover");
+  const img = new Image();
+  img.className = "cover-img";
+  img.alt = `『${BOOK.title}』 표지`;
+  img.onload = () => {
+    cover.replaceChildren(img);
+    cover.classList.add("has-image");
+    cover.removeAttribute("aria-hidden");
+  };
+  img.onerror = () => {
+    console.warn(`표지 이미지를 불러오지 못했습니다: ${BOOK.cover} (파일 이름과 위치를 확인하세요)`);
+  };
+  img.src = BOOK.cover;
 }
 
 /* ---------- 연구원 명부 ---------- */

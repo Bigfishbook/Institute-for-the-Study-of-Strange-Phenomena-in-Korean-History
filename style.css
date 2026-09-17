@@ -386,6 +386,15 @@ main:not(:has(.section:target)) .directory .wrap::after {
   width: 110%; aspect-ratio: 1; border-radius: 50%;
   border: 2px solid var(--red); opacity: .9;
 }
+/* 실제 표지 이미지가 들어간 경우 */
+.book-cover.has-image {
+  aspect-ratio: auto;
+  padding: 0;
+  background: none;
+  box-shadow: 0 0 0 1px var(--line), 16px 16px 0 var(--red);
+}
+.cover-img { width: 100%; height: auto; }
+
 .cover-code { color: var(--red); font-weight: 700; font-size: 14px; }
 .cover-title { margin-top: auto; color: var(--white); font-size: clamp(26px, 3vw, 34px); font-weight: 700; line-height: 1.2; letter-spacing: -.03em; position: relative; }
 .cover-rule { width: 40px; height: 3px; background: var(--white); margin: 18px 0 12px; position: relative; }
