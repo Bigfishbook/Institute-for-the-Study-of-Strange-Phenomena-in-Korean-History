@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이상현상탐사연구원 | 연구원 포털</title>
+  <meta name="description" content="도서 『이상현상 탐사 연구원』의 세계관을 담은 연구원 공식 홈페이지">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+  <!-- 상단 헤더 -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="이상현상탐사연구원 홈">
+        <span class="seal" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><rect x="1.5" y="1.5" width="37" height="37" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="20" cy="20" r="8" fill="none" stroke="currentColor" stroke-width="3"/><line x1="20" y1="1.5" x2="20" y2="12" stroke="currentColor" stroke-width="3"/></svg>
+        </span>
+        <span class="brand-text">이상현상탐사연구원</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">메뉴 열기</span>
+        <span class="bar"></span><span class="bar"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="주요 메뉴">
+        <a href="#book">도서 구매</a>
+        <a href="#researchers">연구원 명부</a>
+        <a href="#test">적성 평가</a>
+        <a href="#playlist">현장 기록음</a>
+        <a href="#preview">본문 열람</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 히어로 -->
+    <section class="hero" id="top">
+      <div class="wrap">
+        <p class="access">열람 권한: 일반 방문자 <span class="status-dot" aria-hidden="true"></span> 접속 중</p>
+        <h1 class="hero-title">
+          <span class="line">설명할 수 없는 것을</span>
+          <span class="line"><button class="redact" type="button" aria-label="가려진 단어 보기" data-reveal="끝까지">끝까지</button> 기록하는 사람들</span>
+        </h1>
+        <p class="hero-lead">
+          이상현상탐사연구원은 도시의 틈에서 발생하는 원인 불명의 사건을 조사하고 기록합니다.
+          이 포털에서는 공개 가능한 자료만 열람할 수 있습니다. 검게 가려진 부분은 눌러서 확인하세요.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-red" href="#book">도서 구매하기</a>
+          <a class="btn btn-line" href="#preview">본문 미리 읽기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 메인 메뉴 (아이콘 선택 가능) -->
+    <section class="directory" aria-labelledby="directory-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="directory-title">열람 가능한 자료</h2>
+          <p class="section-note">각 항목의 아이콘은 <strong>아이콘 변경</strong> 버튼으로 바꿀 수 있고, 이 브라우저에 저장됩니다.</p>
+        </div>
+        <ul class="menu-list" id="menu-list">
+          <!-- script.js에서 생성 -->
+        </ul>
+        <button class="text-btn" type="button" id="reset-icons">아이콘 기본값으로 되돌리기</button>
+      </div>
+    </section>
+
+    <!-- 도서 구매 -->
+    <section class="section" id="book" aria-labelledby="book-title">
+      <div class="wrap book-grid">
+        <div class="book-cover" aria-hidden="true">
+          <div class="cover-inner">
+            <span class="cover-code">AR-07</span>
+            <span class="cover-title" id="cover-title"></span>
+            <span class="cover-rule"></span>
+            <span class="cover-author" id="cover-author"></span>
+          </div>
+        </div>
+        <div class="book-info">
+          <h2 class="section-title" id="book-title">
+            <span class="title-icon" data-icon-slot="book"></span>
+            도서 구매
+          </h2>
+          <p class="book-name" id="book-name"></p>
+          <p class="book-desc" id="book-desc"></p>
+          <dl class="book-meta" id="book-meta"></dl>
+          <h3 class="sub-title">온라인 서점에서 구매하기</h3>
+          <ul class="store-list" id="store-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 캐릭터 소개 -->
+    <section class="section" id="researchers" aria-labelledby="researchers-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title" id="researchers-title">
+            <span class="title-icon" data-icon-slot="researchers"></span>
+            연구원 명부
+          </h2>
+          <p class="section-note">현장탐사 1팀 소속 연구원의 인사 기록입니다. 이름을 선택하면 기록이 열립니다.</p>
+        </div>
+        <div class="roster">
+          <div class="roster-tabs" role="tablist" aria-label="연구원 선택" id="roster-tabs"></div>
+          <article class="dossier" id="dossier" role="tabpanel" tabindex="0" aria-live="polite"></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 인물 유형 테스트 -->
+    <section class="section section-invert" id="test" aria-labelledby="test-title">
+      <div class="wrap narrow">
+        <h2 class="section-title" id="test-title">
+          <span class="title-icon" data-icon-slot="test"></span>
+          연구원 적성 평가
+        </h2>
+        <div class="quiz" id="quiz" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- 플레이리스트 -->
+    <section class="section" id="playlist" aria-labelledby="playlist-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title" id="playlist-title">
+            <span class="title-icon" data-icon-slot="playlist"></span>
+            현장 기록음
+          </h2>
+          <p class="section-note">탐사 상황별로 연구원들이 듣는 플레이리스트입니다. 원하는 플랫폼에서 들어보세요.</p>
+        </div>
+        <div class="playlists" id="playlists"></div>
+      </div>
+    </section>
+
+    <!-- 본문 미리보기 -->
+    <section class="section" id="preview" aria-labelledby="preview-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title" id="preview-title">
+            <span class="title-icon" data-icon-slot="preview"></span>
+            본문 열람
+          </h2>
+          <p class="section-note">1장 「지하 3층의 물소리」 일부를 공개합니다. 키보드 방향키로도 넘길 수 있습니다.</p>
+        </div>
+        <div class="reader">
+          <div class="spread" id="spread"></div>
+          <div class="reader-controls">
+            <button class="btn btn-line" type="button" id="page-prev">이전 쪽</button>
+            <p class="page-count" id="page-count" aria-live="polite"></p>
+            <button class="btn btn-line" type="button" id="page-next">다음 쪽</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="footer-brand">이상현상탐사연구원</p>
+      <p class="footer-note">이 사이트는 도서의 세계관을 바탕으로 만든 독자용 페이지입니다. 등장하는 기관, 인물, 사건은 모두 허구입니다.</p>
+    </div>
+  </footer>
+
+  <!-- 아이콘 선택 창 -->
+  <dialog class="icon-dialog" id="icon-dialog" aria-labelledby="icon-dialog-title">
+    <form method="dialog" class="icon-dialog-inner">
+      <div class="dialog-head">
+        <h2 id="icon-dialog-title">아이콘 선택</h2>
+        <button class="close-btn" value="cancel" aria-label="닫기">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2"/></svg>
+        </button>
+      </div>
+      <p class="dialog-target" id="dialog-target"></p>
+      <div class="icon-grid" id="icon-grid" role="listbox" aria-label="아이콘 목록"></div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
