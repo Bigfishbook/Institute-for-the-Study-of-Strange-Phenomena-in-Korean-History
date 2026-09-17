@@ -1,5 +1,5 @@
 /* =========================================================
-   이상현상탐사연구원 · 연구원 포털
+   한국사이상현상연구원 · 연구원 포털
    ---------------------------------------------------------
    사이트의 모든 내용은 아래 "설정" 부분에서 고칠 수 있습니다.
    도서 정보, 서점 링크, 연구원, 테스트 문항, 플레이리스트 주소,
@@ -10,37 +10,25 @@
    1. 설정: 도서 정보
    --------------------------------------------------------- */
 const BOOK = {
-  title: "이상현상 탐사 연구원",
-  author: "저자 이름",
+  title: "한국사 이상현상 연구원",
   description:
-    "설계도에 없는 지하 3층, 매번 같은 시각에 들려오는 물소리. 이상현상탐사연구원 현장탐사 1팀은 세 번이나 기록이 끊긴 사건을 끝까지 쫓기로 한다. 원인 불명의 현상을 조사하는 연구원들의 첫 번째 탐사 기록.",
-  meta: [
-    ["출판사", "출판사 이름"],
-    ["출간일", "2026년 9월"],
-    ["쪽수", "000쪽"],
-    ["정가", "00,000원"],
-  ],
-};
+    "국가가 '사적'이라는 이름으로 보존한 장소에서, 정작 역사에 남지 못한 사람들의 목소리가 들려오기 시작한다. 궁궐과 고분, 사찰과 종갓집에서 발생하는 이상현상을 추적하는 비밀 기관 '한국사 이상현상 연구원'의 첫 번째 탐사 기록",
 
 /* 서점 링크: url을 실제 상품 페이지 주소로 바꾸면 더 좋습니다.
    지금은 도서 제목으로 검색한 결과 페이지로 연결됩니다. */
 const q = encodeURIComponent(BOOK.title);
 const STORES = [
-  { name: "교보문고", url: `https://search.kyobobook.co.kr/search?keyword=${q}` },
-  { name: "예스24", url: `https://www.yes24.com/Product/Search?query=${q}` },
-  { name: "알라딘", url: `https://www.aladin.co.kr/search/wsearchresult.aspx?SearchTarget=All&SearchWord=${q}` },
-  { name: "리디", url: `https://ridibooks.com/search?q=${q}` },
-];
-
+  { name: "기록 열람", url: `https://product.kyobobook.co.kr/detail/S000220693844 },
+ 
 /* ---------------------------------------------------------
    2. 설정: 메인 메뉴 항목과 기본 아이콘
    --------------------------------------------------------- */
 const MENU = [
-  { id: "book", name: "도서 구매", desc: "온라인 서점에서 책을 구매할 수 있습니다.", href: "#book", icon: "book" },
-  { id: "researchers", name: "연구원 명부", desc: "현장탐사 1팀 연구원 네 명의 인사 기록을 봅니다.", href: "#researchers", icon: "idcard" },
-  { id: "test", name: "연구원 적성 평가", desc: "여섯 가지 질문으로 나와 닮은 연구원을 찾습니다.", href: "#test", icon: "checklist" },
-  { id: "playlist", name: "현장 기록음", desc: "탐사 상황별로 고른 플레이리스트를 들어봅니다.", href: "#playlist", icon: "headphones" },
-  { id: "preview", name: "본문 열람", desc: "1장의 첫 장면을 미리 읽을 수 있습니다.", href: "#preview", icon: "document" },
+  { id: "book", name: "기록 열람", desc: "한국사 이상현상 연구원의 첫 번째 탐사 기록을 열람합니다.", href: "#book", icon: "book" },
+  { id: "researchers", name: "연구원 조직도", desc: "연구원 연혁 및 조직도입니다.", href: "#researchers", icon: "idcard" },
+  { id: "test", name: "탐사원 적성 평가", desc: "입사를 희망하시는 분은 먼저 평가를 진행해 주세요.", href: "#test", icon: "checklist" },
+  { id: "playlist", name: "오디오 아카이브실", desc: "탐사 시 청취를 권장합니다.", href: "#playlist", icon: "headphones" },
+  { id: "preview", name: "(대외비) 지침서", desc: "생존을 위해 지침서 정독을 권장합니다.", href: "#preview", icon: "document" },
 ];
 
 /* ---------------------------------------------------------
@@ -48,16 +36,16 @@ const MENU = [
    --------------------------------------------------------- */
 const RESEARCHERS = [
   {
-    id: "seoyun",
-    name: "한서윤",
-    role: "책임연구원, 현장탐사 1팀 팀장",
+    id: "seohee",
+    name: "최서희",
+    role: "탐사본부, 탐사본부장",
     code: "AR-07-001",
     fields: [
       ["근속", "11년"],
-      ["전문 분야", "현장 기록, 격리 절차 설계"],
-      ["성향", "침착함, 원칙을 끝까지 지킴"],
+      ["전문 분야", "탐사"],
+      ["성향", "강인함, 책임감이 강함"],
     ],
-    secret: "2015년 터널 소실 사건의 유일한 생존자",
+    secret: "??",
     quote: "기록되지 않은 현상은, 다음 사람에게 다시 일어납니다.",
     type: {
       title: "기록형 연구원",
@@ -70,16 +58,16 @@ const RESEARCHERS = [
     },
   },
   {
-    id: "dohyun",
-    name: "강도현",
-    role: "현장요원, 진입 및 구조 담당",
+    id: "jeechul",
+    name: "강지철",
+    role: "관리본부, 관리본부장",
     code: "AR-07-014",
     fields: [
       ["근속", "6년"],
-      ["전문 분야", "진입, 구조, 근접 대응"],
-      ["성향", "직감적, 몸이 먼저 움직임"],
+      ["전문 분야", "관리"],
+      ["성향", "희생적"],
     ],
-    secret: "노출 사고 이후 소리에서 색을 봄",
+    secret: "??",
     quote: "생각은 나와서 해도 됩니다. 일단 사람부터 꺼내죠.",
     type: {
       title: "돌파형 연구원",
@@ -92,16 +80,16 @@ const RESEARCHERS = [
     },
   },
   {
-    id: "ian",
-    name: "민이안",
-    role: "분석연구원, 본부 상황실",
+    id: "jeeyul",
+    name: "신지율",
+    role: "탐사1팀, 탐사원",
     code: "AR-07-022",
     fields: [
       ["근속", "3년"],
-      ["전문 분야", "패턴 분석, 발생 예측 모델"],
-      ["성향", "회의적, 증거 없이는 믿지 않음"],
+      ["전문 분야", "생존자 구출"],
+      ["성향", "저돌적"],
     ],
-    secret: "입사 전 이상현상 부정 논문 3편 발표",
+    secret: "???",
     quote: "설명할 수 없다는 건, 아직 설명하지 못했다는 뜻일 뿐이에요.",
     type: {
       title: "분석형 연구원",
@@ -114,14 +102,14 @@ const RESEARCHERS = [
     },
   },
   {
-    id: "yeoreum",
-    name: "윤여름",
-    role: "신입 연구원, 현장 면담 담당",
+    id: "yena",
+    name: "서예나",
+    role: "탐사1팀, 신규 탐사원",
     code: "AR-07-031",
     fields: [
       ["근속", "4개월"],
-      ["전문 분야", "현장 면담, 비언어 신호 해석"],
-      ["성향", "공감형, 겁은 많지만 물러서지 않음"],
+      ["전문 분야", "탐사 서포트"],
+      ["성향", "겁은 많지만 물러서지 않음"],
     ],
     secret: "이상현상과 의사소통에 성공한 첫 보고자",
     quote: "무섭긴 한데요, 저건 뭔가 말하고 싶어 하는 것 같아요.",
@@ -204,33 +192,12 @@ const QUESTIONS = [
    --------------------------------------------------------- */
 const PLAYLISTS = [
   {
-    time: "출동 직전",
-    name: "진입 전 10분",
-    desc: "심박을 고르게 만드는 낮은 박자의 연주곡 위주로 골랐습니다. 도현이 헬멧 끈을 조이며 듣는 목록입니다.",
+    time: "탐사 전 필수 청취",
+    name: "오디오 아카이브",
+    desc: "탐사원들이 탐사 시 유용하게 사용한 오디오 플레이리스트입니다",
     links: [
-      { platform: "YouTube Music", url: "" },
-      { platform: "Spotify", url: "" },
-      { platform: "멜론", url: "" },
-    ],
-  },
-  {
-    time: "새벽 관측",
-    name: "기록실의 불빛",
-    desc: "모니터 불빛만 남은 상황실에서 이안이 데이터를 정리하며 틀어 두는 앰비언트 사운드입니다.",
-    links: [
-      { platform: "YouTube Music", url: "" },
-      { platform: "Spotify", url: "" },
-      { platform: "멜론", url: "" },
-    ],
-  },
-  {
-    time: "탐사 종료",
-    name: "물이 빠진 뒤",
-    desc: "모두 무사히 돌아온 아침, 여름과 서윤이 편의점 앞에서 함께 들은 조용한 노래들입니다.",
-    links: [
-      { platform: "YouTube Music", url: "" },
-      { platform: "Spotify", url: "" },
-      { platform: "멜론", url: "" },
+      { platform: "YouTube Music", url: "https://youtube.com/playlist?list=PLP4PFc0hKG-4&si=g7LLlKf3wD5hP83O" },
+
     ],
   },
 ];
