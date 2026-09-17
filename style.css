@@ -1,5 +1,5 @@
 /* =========================================================
-   이상현상탐사연구원 · 연구원 포털 (디자인 2차)
+   한국사이상현상연구원 · 연구원 포털 (디자인 2차)
    ---------------------------------------------------------
    구조: 접속하면 바로 5개의 '미공개 파일' 아이콘이 보이고,
    파일을 누르면 해당 섹션만 열립니다.
@@ -408,7 +408,7 @@ main:not(:has(.section:target)) .directory .wrap::after {
 .store-link:hover { border-color: var(--red); background: var(--red); }
 .store-link svg { width: 18px; height: 18px; }
 
-/* ---------- 연구원 명부 ---------- */
+/* ---------- 탐사원 명부 ---------- */
 .roster { display: grid; grid-template-columns: 220px 1fr; border: 1px solid var(--line); }
 
 .roster-tabs { display: flex; flex-direction: column; border-right: 1px solid var(--line); }
@@ -446,7 +446,7 @@ main:not(:has(.section:target)) .directory .wrap::after {
   color: var(--white); padding-left: 20px; border-left: 3px solid var(--red); margin: 0;
 }
 
-/* ---------- 적성 평가 (흰 파일) ---------- */
+/* ---------- 탐사원 TEST ---------- */
 .section-invert { background: var(--white); color: var(--ink); }
 .section-invert:target { background: var(--white); border-color: var(--white); border-top-color: var(--red); }
 .section-invert .section-title { color: var(--black); }
