@@ -26,18 +26,23 @@ const STORES = [
 ];
 
 /* ---------------------------------------------------------
-   2. 설정: 메인 메뉴 항목과 기본 아이콘
+   2. 설정: 메인 메뉴 항목과 아이콘
+      icon 값을 아래 7번 아이콘 모음의 이름(book, eye, key 등)으로 바꾸면 아이콘이 바뀝니다.
    --------------------------------------------------------- */
 const MENU = [
   { id: "book", name: "기록 열람", desc: "한국사 이상현상 연구원의 첫 번째 탐사 기록을 열람합니다.", href: "#book", icon: "book" },
-  { id: "researchers", name: "연구원 조직도", desc: "연구원 연혁 및 조직도입니다.", href: "#researchers", icon: "idcard" },
+  { id: "researchers", name: "탐사원 프로필", desc: "주요 탐사원들의 프로필을 열람합니다.", href: "#researchers", icon: "idcard" },
   { id: "test", name: "탐사원 적성 평가", desc: "입사를 희망하시는 분은 먼저 평가를 진행해 주세요.", href: "#test", icon: "checklist" },
   { id: "playlist", name: "오디오 아카이브실", desc: "탐사 시 청취를 권장합니다.", href: "#playlist", icon: "headphones" },
   { id: "preview", name: "(대외비) 지침서", desc: "생존을 위해 지침서 정독을 권장합니다.", href: "#preview", icon: "document" },
 ];
 
 /* ---------------------------------------------------------
-   3. 설정: 연구원(캐릭터)
+   3. 설정: 탐사원 프로필(캐릭터)
+      인물을 추가하려면 { ... }, 한 덩어리를 복사해 붙여 넣고 내용을 바꾸세요.
+      id는 인물마다 서로 다른 영문이어야 합니다.
+      fields는 [항목 이름, 내용] 형식으로 원하는 만큼 넣을 수 있습니다.
+      secret: "..." 을 넣으면 '비고' 칸이 검열 막대로 가려진 채 표시됩니다.
    --------------------------------------------------------- */
 const RESEARCHERS = [
   {
@@ -127,6 +132,32 @@ const RESEARCHERS = [
       ],
       traits: ["공감", "관찰력", "용기 있는 다정함", "직관"],
     },
+  },
+  {
+    id: "member5",
+    name: "새 탐사원 1",
+    role: "소속, 직책",
+    code: "AR-07-040",
+    fields: [
+      ["나이", "00세"],
+      ["좋아하는 것", "내용을 입력하세요"],
+      ["싫어하는 것", "내용을 입력하세요"],
+      ["꿈", "내용을 입력하세요"],
+    ],
+    quote: "대사를 입력하세요.",
+  },
+  {
+    id: "member6",
+    name: "새 탐사원 2",
+    role: "소속, 직책",
+    code: "AR-07-041",
+    fields: [
+      ["나이", "00세"],
+      ["좋아하는 것", "내용을 입력하세요"],
+      ["싫어하는 것", "내용을 입력하세요"],
+      ["꿈", "내용을 입력하세요"],
+    ],
+    quote: "대사를 입력하세요.",
   },
 ];
 
@@ -218,27 +249,6 @@ function showToast(message) {
   toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 2400);
 }
 
-/* ---------- 저장소 (파일로 열어도 동작하도록 예외 처리) ---------- */
-const STORAGE_KEY = "ari-portal-icons";
-function loadIconChoices() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-  } catch (e) {
-    return {};
-  }
-}
-function saveIconChoices(choices) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(choices));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-let iconChoices = loadIconChoices();
-const currentIcon = (id) => iconChoices[id] || MENU.find((m) => m.id === id).icon;
-
 /* ---------- 모바일 메뉴 ---------- */
 function initNav() {
   const toggle = $(".nav-toggle");
@@ -268,7 +278,7 @@ function bindRedactions(root = document) {
   });
 }
 
-/* ---------- 메인 메뉴 + 아이콘 선택 ---------- */
+/* ---------- 메인 메뉴 ---------- */
 function renderMenu() {
   $("#menu-list").innerHTML = MENU.map(
     (item) => `
@@ -278,7 +288,6 @@ function renderMenu() {
           <span class="menu-name">${item.name}</span>
           <span class="menu-desc">${item.desc}</span>
         </a>
-        <button class="icon-change" type="button" data-menu-id="${item.id}">아이콘 변경</button>
       </li>`
   ).join("");
   applyIcons();
@@ -286,68 +295,8 @@ function renderMenu() {
 
 function applyIcons() {
   $$("[data-icon-slot]").forEach((slot) => {
-    slot.innerHTML = iconSvg(currentIcon(slot.dataset.iconSlot));
-  });
-}
-
-function initIconPicker() {
-  const dialog = $("#icon-dialog");
-  const grid = $("#icon-grid");
-  let targetId = null;
-  let opener = null;
-
-  function openPicker(id, button) {
-    targetId = id;
-    opener = button;
-    const item = MENU.find((m) => m.id === id);
-    $("#dialog-target").innerHTML = `<b>${item.name}</b> 항목에 쓸 아이콘을 고르세요.`;
-    const selected = currentIcon(id);
-    grid.innerHTML = Object.entries(ICONS)
-      .map(
-        ([key, icon]) => `
-        <button type="button" class="icon-option" role="option" data-icon="${key}"
-          aria-selected="${key === selected}" aria-label="${icon.label}">
-          ${iconSvg(key)}<span>${icon.label}</span>
-        </button>`
-      )
-      .join("");
-
-    if (typeof dialog.showModal === "function") {
-      dialog.showModal();
-      $(".icon-option[aria-selected='true']", grid)?.focus();
-    } else {
-      showToast("이 브라우저는 아이콘 선택 창을 지원하지 않습니다. 최신 브라우저로 열어 주세요.");
-    }
-  }
-
-  $("#menu-list").addEventListener("click", (e) => {
-    const btn = e.target.closest(".icon-change");
-    if (btn) openPicker(btn.dataset.menuId, btn);
-  });
-
-  grid.addEventListener("click", (e) => {
-    const option = e.target.closest(".icon-option");
-    if (!option || !targetId) return;
-    iconChoices[targetId] = option.dataset.icon;
-    const saved = saveIconChoices(iconChoices);
-    applyIcons();
-    dialog.close();
-    const name = MENU.find((m) => m.id === targetId).name;
-    showToast(saved ? `${name} 아이콘을 바꿨습니다.` : `${name} 아이콘을 바꿨습니다. 이 브라우저에서는 저장되지 않습니다.`);
-  });
-
-  dialog.addEventListener("close", () => opener?.focus());
-
-  // 창 바깥(배경)을 누르면 닫기
-  dialog.addEventListener("click", (e) => {
-    if (e.target === dialog) dialog.close();
-  });
-
-  $("#reset-icons").addEventListener("click", () => {
-    iconChoices = {};
-    saveIconChoices(iconChoices);
-    applyIcons();
-    showToast("모든 아이콘을 기본값으로 되돌렸습니다.");
+    const item = MENU.find((m) => m.id === slot.dataset.iconSlot);
+    slot.innerHTML = iconSvg(item && item.icon);
   });
 }
 
@@ -448,8 +397,8 @@ function selectResearcher(id) {
       <p class="dossier-role">${r.role}</p>
       <dl class="dossier-fields">
         ${r.fields.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}
-        <dt>비고</dt>
-        <dd><button class="redact" type="button" data-reveal="${r.secret}" aria-label="가려진 기록 보기">${r.secret}</button></dd>
+        ${r.secret ? `<dt>비고</dt>
+        <dd><button class="redact" type="button" data-reveal="${r.secret}" aria-label="가려진 기록 보기">${r.secret}</button></dd>` : ""}
       </dl>
     </div>
     <blockquote class="dossier-quote">${r.quote}</blockquote>`;
@@ -568,7 +517,7 @@ function initGuide() {
     ).observe($("#guide-frame"));
   }
   document.addEventListener("keydown", (e) => {
-    if (!visible || $("#icon-dialog").open || guideImages().length < 2) return;
+    if (!visible || guideImages().length < 2) return;
     if (document.activeElement.closest?.(".roster-tabs")) return;
     if (e.key === "ArrowRight") turnGuide(1);
     if (e.key === "ArrowLeft") turnGuide(-1);
@@ -581,7 +530,6 @@ function initGuide() {
 document.addEventListener("DOMContentLoaded", () => {
   initNav();
   renderMenu();
-  initIconPicker();
   applyIcons();
   bindRedactions();
   renderBook();
