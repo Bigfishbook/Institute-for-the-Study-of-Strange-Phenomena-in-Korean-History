@@ -136,7 +136,7 @@ const RESEARCHERS = [
       예: url: "https://example.com/my-test",
    --------------------------------------------------------- */
 const TEST = {
-  url: "",
+  url: "https://smore.im/quiz/qGpEe5z6OJ",
   intro: "입사를 희망하시는 분은 먼저 적성 평가를 진행해 주세요. 평가 결과에 따라 배정될 부서가 결정됩니다.",
   button: "평가 시작하기",
 };
